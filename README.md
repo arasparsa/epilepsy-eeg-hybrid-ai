@@ -1,5 +1,20 @@
 # Epilepsy EEG Hybrid AI
 
+Interpretable hybrid ML/DL framework for seizure detection using public EEG datasets.
+
+## Key Features
+- Patient-independent evaluation (no data leakage)
+- Hybrid ML + Deep Learning architecture
+- Cross-dataset validation (CHB-MIT → Siena)
+- Explainable AI (SHAP, Grad-CAM, Attention)
+
+## Goal
+Build a research-grade pipeline for EEG-based epilepsy detection and publish a Q1 journal paper.
+
+
+
+# Epilepsy EEG Hybrid AI
+
 **An interpretable hybrid machine learning and deep learning framework for patient-independent epileptic seizure detection across public EEG databases.**
 
 ## Project Status
