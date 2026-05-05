@@ -36,12 +36,6 @@ The central question of this project is:
 
 ---
 ## Repository Structure
-src/            core code
-notebooks/      experiments
-data/           datasets (not included)
-results/        outputs
-manuscript/     paper draft
-
 
 ---
 ## Installation
@@ -127,17 +121,6 @@ python scripts/08_generate_figures.py
 * Write methods.
 * Write results.
 * Prepare discussion and limitations.
-
----
-## Important Limitations
-
-This project must be honest about its limitations:
-
-1. Public EEG datasets differ in patient age, recording system, montage, and annotation style.
-2. Cross-dataset performance may drop substantially.
-3. High window-level accuracy does not guarantee clinical usefulness.
-4. Seizure detection and seizure prediction are different tasks and must not be mixed.
-5. External clinical validation is required before any medical use.
 
 ---
 ## Citation Notice
