@@ -145,19 +145,6 @@ This project must be honest about its limitations:
 Users of this repository must cite the original EEG datasets and any related publications according to the dataset providers' instructions.
 
 ---
-## License
-
-Code license to be decided.
-
-Recommended:
-
-```text
-MIT License for code
-```
-
-Dataset licenses must follow the original dataset providers' terms.
-
----
 ## Contact
 
 Sara Parsa
