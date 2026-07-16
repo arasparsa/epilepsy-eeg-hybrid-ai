@@ -1,0 +1,22 @@
+name: epilepsy-eeg
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - ipykernel
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - mne
+  - pyedflib
+  - pyyaml
+  - tqdm
+  - joblib
+  - pytest
+  - pip

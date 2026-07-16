@@ -1,0 +1,30 @@
+project:
+  name: epilepsy-eeg-hybrid-ai
+  random_seed: 42
+
+dataset:
+  name: chbmit
+  raw_dir: data/raw/chbmit
+  interim_dir: data/interim/chbmit
+  processed_dir: data/processed/chbmit
+  metadata_file: metadata/chbmit_metadata.csv
+
+signal:
+  original_sampling_rate: 256
+  target_sampling_rate: 256
+  bandpass_low_hz: 0.5
+  bandpass_high_hz: 45.0
+  notch_frequency_hz: 60.0
+
+segmentation:
+  window_length_seconds: 4
+  overlap_fraction: 0.5
+  seizure_overlap_threshold: 0.5
+
+labels:
+  non_seizure: 0
+  seizure: 1
+
+validation:
+  split_level: patient
+  random_seed: 42

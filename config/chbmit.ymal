@@ -1,6 +1,0 @@
-dataset_name: CHB-MIT
-sampling_rate: 256
-bandpass_low: 0.5
-bandpass_high: 45
-window_length_seconds: 4
-overlap: 0.5
