@@ -41,7 +41,7 @@ The central question of this project is:
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/epilepsy-eeg-hybrid-ai.git
+git clone https://github.com/arasparsa/epilepsy-eeg-hybrid-ai.git
 cd epilepsy-eeg-hybrid-ai
 pip install -r requirements.txt
 ```
