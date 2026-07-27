@@ -3,6 +3,9 @@
 ## Overview
 Interpretable hybrid ML/DL framework for seizure detection using public EEG datasets.
 
+<img width="1406" height="493" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/2093a3ce-4915-4548-acc5-17174d1de071" />
+
+
 ### Key Features
 - Patient-independent evaluation (no data leakage)
 - Hybrid ML + Deep Learning architecture
