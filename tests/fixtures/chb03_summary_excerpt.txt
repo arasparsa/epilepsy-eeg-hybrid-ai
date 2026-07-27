@@ -1,0 +1,6 @@
+File Name: chb03_01.edf
+File Start Time: 13:23:36
+File End Time: 14:23:36
+Number of Seizures in File: 1
+Seizure Start Time: 362 seconds
+Seizure End Time: 414 seconds
