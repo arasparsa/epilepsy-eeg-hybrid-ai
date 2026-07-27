@@ -1,0 +1,12 @@
+{
+  "dataset": "CHB-MIT",
+  "dataset_version": "1.0.0",
+  "case_count": 23,
+  "recording_count": 657,
+  "matched_recording_count": 657,
+  "seizure_recording_count": 138,
+  "seizure_count": 194,
+  "total_recording_hours": 905.7672222222222,
+  "total_ictal_seconds": 11335.0,
+  "invalid_seizure_interval_count": 0
+}
