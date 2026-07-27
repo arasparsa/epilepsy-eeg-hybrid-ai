@@ -1,0 +1,2 @@
+summary_relative_path,error_type,error_message
+chb09/chb09-summary.txt,SummaryParseError,"Seizure index mismatch in chb09_08.edf: start index=2, end index=1"

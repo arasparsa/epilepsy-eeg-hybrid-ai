@@ -1,0 +1,16 @@
+Channels in EDF Files:
+Channel 1: FP1-F7
+Channel 2: F7-T7
+Channel 3: T7-P7
+
+File Name: chb01_03.edf
+File Start Time: 13:43:04
+File End Time: 14:43:04
+Number of Seizures in File: 1
+Seizure 1 Start Time: 2996 seconds
+Seizure 1 End Time: 3036 seconds
+
+File Name: chb01_04.edf
+File Start Time: 14:43:12
+File End Time: 15:43:12
+Number of Seizures in File: 0
