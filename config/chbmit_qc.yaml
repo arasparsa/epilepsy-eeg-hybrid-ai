@@ -1,0 +1,54 @@
+dataset:
+  name: CHB-MIT
+  version: 1.0.0
+  raw_dir: data/raw/chbmit
+  recordings_file: metadata/chbmit_recordings.csv
+  seizures_file: metadata/chbmit_seizures.csv
+
+output:
+  directory: metadata/signal_quality
+  report_directory: reports/signal_quality
+
+processing:
+  chunk_duration_seconds: 60.0
+  minimum_chunk_duration_seconds: 10.0
+  preload: false
+  convert_to_microvolts: true
+
+spectral:
+  enabled: true
+  fmin_hz: 0.5
+  fmax_hz: 100.0
+  nperseg_seconds: 4.0
+  overlap_fraction: 0.5
+  line_frequency_hz: 60.0
+  line_band_half_width_hz: 1.0
+  line_reference_band_half_width_hz: 5.0
+  high_frequency_start_hz: 40.0
+  high_frequency_end_hz: 100.0
+
+flatline:
+  difference_tolerance_uv: 0.01
+  minimum_run_seconds: 1.0
+
+provisional_flags:
+  nonfinite_fraction_error: 0.0
+  flatline_fraction_review: 0.01
+  zero_fraction_review: 0.01
+  constant_channel_std_uv: 0.01
+  extreme_peak_to_peak_uv: 5000.0
+  line_noise_ratio_review: 0.25
+  high_frequency_ratio_review: 0.50
+  bad_chunk_fraction_review: 0.10
+
+annotation:
+  seizure_overlap_labels:
+    - non_ictal
+    - boundary
+    - ictal
+  ictal_overlap_threshold: 0.50
+
+runtime:
+  overwrite: false
+  fail_fast: false
+  log_every_n_files: 10
