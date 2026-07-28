@@ -1,0 +1,11 @@
+{
+  "selected_recordings": 657,
+  "processed_recordings": 657,
+  "failed_recordings": 0,
+  "chunk_channel_rows": 1379528,
+  "recording_channel_rows": 17175,
+  "recording_rows": 657,
+  "review_chunk_rows": 919701,
+  "review_recordings": 657,
+  "config_file": "config\\chbmit_qc.yaml"
+}
