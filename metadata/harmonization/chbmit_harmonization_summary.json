@@ -1,0 +1,13 @@
+{
+  "policy_version": "harmonization_v1",
+  "primary_channel_set": "primary_17",
+  "total_recordings": 657,
+  "included_recordings": 654,
+  "excluded_recordings": 3,
+  "included_cases": 23,
+  "included_seizure_recordings": 135,
+  "included_seizures": 181,
+  "included_ictal_seconds": 10849.0,
+  "included_recording_hours": 902.7605555555556,
+  "qc_review_recordings_retained": 654
+}
