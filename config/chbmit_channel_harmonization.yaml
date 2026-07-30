@@ -1,0 +1,139 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  policy_version: harmonization_v1
+  random_seed: 42
+
+inputs:
+  raw_dir: data/raw/chbmit
+  recordings_file: metadata/chbmit_recordings.csv
+  seizures_file: metadata/chbmit_seizures.csv
+  channel_long_file: metadata/chbmit_channel_long.csv
+  channel_counts_file: metadata/chbmit_channel_counts.csv
+  qc_channels_file: metadata/signal_quality/chbmit_qc_channels.csv
+  qc_recordings_file: metadata/signal_quality/chbmit_qc_recordings.csv
+  manual_qc_file: metadata/signal_quality/chbmit_manual_qc_review.csv
+  alias_file: config/chbmit_channel_aliases.csv
+
+outputs:
+  directory: metadata/harmonization
+
+normalization:
+  uppercase: true
+  remove_leading_eeg: true
+  remove_terminal_reference_suffixes:
+    - REF
+    - LE
+  normalize_dash_characters: true
+  remove_spaces_around_dashes: true
+  allow_automatic_anatomical_mapping: false
+  allow_automatic_duplicate_merging: false
+
+channel_sets:
+
+  primary_17:
+    role: primary_analysis
+    description: >
+      High-coverage bilateral bipolar montage excluding the
+      inconsistent T8-P8 derivation.
+    channels:
+      - FP1-F7
+      - F7-T7
+      - T7-P7
+      - P7-O1
+      - FP1-F3
+      - F3-C3
+      - C3-P3
+      - P3-O1
+      - FZ-CZ
+      - CZ-PZ
+      - FP2-F4
+      - F4-C4
+      - C4-P4
+      - P4-O2
+      - FP2-F8
+      - F8-T8
+      - P8-O2
+
+  extended_18:
+    role: sensitivity_analysis
+    description: >
+      Primary montage plus T8-P8 when a validated canonical
+      derivation is available.
+    channels:
+      - FP1-F7
+      - F7-T7
+      - T7-P7
+      - P7-O1
+      - FP1-F3
+      - F3-C3
+      - C3-P3
+      - P3-O1
+      - FZ-CZ
+      - CZ-PZ
+      - FP2-F4
+      - F4-C4
+      - C4-P4
+      - P4-O2
+      - FP2-F8
+      - F8-T8
+      - T8-P8
+      - P8-O2
+
+  temporal_8:
+    role: reduced_montage_ablation
+    channels:
+      - FP1-F7
+      - F7-T7
+      - T7-P7
+      - P7-O1
+      - FP2-F8
+      - F8-T8
+      - T8-P8
+      - P8-O2
+
+  parasagittal_8:
+    role: reduced_montage_ablation
+    channels:
+      - FP1-F3
+      - F3-C3
+      - C3-P3
+      - P3-O1
+      - FP2-F4
+      - F4-C4
+      - C4-P4
+      - P4-O2
+
+inclusion:
+  primary_channel_set: primary_17
+
+  require_metadata_status:
+    - matched
+
+  require_valid_sampling_rate: true
+  require_positive_duration: true
+
+  require_all_target_channels: true
+  allow_missing_target_channels: 0
+
+  exclude_on_qc_review_flag: false
+  exclude_on_recording_needs_review: false
+
+  exclude_on_confirmed_manual_decisions:
+    - confirmed_unusable_recording
+    - unreadable_edf
+    - all_target_channels_invalid
+
+  retain_ictal_recordings_even_if_review_required: true
+
+alias_policy:
+  use_only_validated_aliases: true
+  alias_must_not_create_duplicate_target_names: true
+  require_signal_validation_for_suffix_aliases: true
+
+ordering:
+  enforce_exact_target_order: true
+
+output_data:
+  write_harmonized_signal_files: false
+  write_manifest_only: true

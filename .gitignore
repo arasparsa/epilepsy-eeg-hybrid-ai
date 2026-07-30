@@ -88,3 +88,8 @@ results/logs/*
 *.key
 credentials.json
 secrets.yaml
+
+#===========================================================
+# Large files
+#===========================================================
+metadata/signal_quality/chbmit_qc_chunks.csv
