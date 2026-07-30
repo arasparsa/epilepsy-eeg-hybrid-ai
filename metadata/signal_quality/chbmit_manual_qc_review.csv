@@ -1,0 +1,2 @@
+case_id,recording_id,channel_name,chunk_id,flag_type,annotation_label,raw_reviewed,psd_reviewed,review_decision,reviewer,review_date,notes
+chb01,chb01_03,FP1-F7,chb01_03__chunk00049,extreme_amplitude,ictal,True,True,ictal_activity,Amir,2026-07-27,High amplitude coincides with annotated seizure
