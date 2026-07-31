@@ -93,3 +93,11 @@ secrets.yaml
 # Large files
 #===========================================================
 metadata/signal_quality/chbmit_qc_chunks.csv
+
+# Preprocessed EEG data
+data/interim/chbmit/preprocessing_v1/*
+!data/interim/chbmit/preprocessing_v1/.gitkeep
+
+# MNE FIF signal files
+*.fif
+*.fif.gz

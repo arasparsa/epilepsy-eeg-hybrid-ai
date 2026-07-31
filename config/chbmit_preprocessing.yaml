@@ -1,0 +1,86 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  preprocessing_version: preprocessing_v1
+  harmonization_policy_version: harmonization_v1
+
+inputs:
+  raw_dir: data/raw/chbmit
+  inclusion_manifest: metadata/harmonization/chbmit_recording_inclusion_manifest.csv
+  seizures_file: metadata/chbmit_seizures.csv
+  alias_file: config/chbmit_channel_aliases.csv
+  harmonization_config: config/chbmit_channel_harmonization.yaml
+
+outputs:
+  signal_directory: data/interim/chbmit/preprocessing_v1
+  metadata_directory: metadata/preprocessing
+  report_directory: reports/preprocessing
+
+channels:
+  channel_set_name: primary_17
+  require_exact_order: true
+  set_all_selected_channels_to_eeg: true
+
+annotations:
+  add_ictal_annotations: true
+  ictal_description: ictal
+  preserve_existing_annotations: true
+  reject_duplicate_ictal_annotations: true
+
+filtering:
+  enabled: true
+  l_freq_hz: 0.5
+  h_freq_hz: 45.0
+  method: fir
+  phase: zero
+  fir_design: firwin
+  fir_window: hamming
+  filter_length: auto
+  l_trans_bandwidth: auto
+  h_trans_bandwidth: auto
+  pad: reflect_limited
+  skip_by_annotation:
+    - edge
+    - bad_acq_skip
+
+notch_filter:
+  enabled: false
+  frequencies_hz:
+    - 60.0
+  method: fir
+  phase: zero
+  fir_design: firwin
+
+resampling:
+  enabled: false
+  target_sampling_rate_hz: 256.0
+  method: polyphase
+
+rereferencing:
+  enabled: false
+  reason: >
+    CHB-MIT target channels are already bipolar derivations.
+
+normalization:
+  enabled: false
+  reason: >
+    Normalization parameters will be estimated after
+    patient-independent splitting and using training data only.
+
+artifact_handling:
+  automatically_drop_flagged_recordings: false
+  automatically_drop_flagged_channels: false
+  automatically_interpolate_channels: false
+  automatically_annotate_qc_chunks_as_bad: false
+
+saving:
+  format: fif
+  fmt: single
+  split_size: 2GB
+  overwrite: false
+  compute_sha256: true
+
+runtime:
+  preload_after_channel_selection: true
+  fail_fast: false
+  log_every_n_files: 10
