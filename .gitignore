@@ -101,3 +101,5 @@ data/interim/chbmit/preprocessing_v1/*
 # MNE FIF signal files
 *.fif
 *.fif.gz
+
+metadata/segmentation/chbmit_window_manifest.csv
