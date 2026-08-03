@@ -1,0 +1,18 @@
+{
+  "segmentation_version": "segmentation_v1",
+  "selected_recordings": 654,
+  "successfully_segmented_recordings": 654,
+  "failed_recordings": 0,
+  "total_windows": 1624301,
+  "non_ictal_windows": 1618605,
+  "boundary_windows": 0,
+  "ictal_windows": 5696,
+  "clean_non_ictal_windows": 1607848,
+  "window_duration_seconds": 4.0,
+  "stride_seconds": 2.0,
+  "window_samples": 1024,
+  "stride_samples": 512,
+  "ictal_overlap_threshold": 0.01,
+  "git_commit": "288ae44e938bb8fc2fdf7434d08736afcc49766c",
+  "segmentation_timestamp_utc": "2026-08-03T18:57:52.691221+00:00"
+}

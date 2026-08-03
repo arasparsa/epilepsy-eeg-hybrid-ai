@@ -1,0 +1,1 @@
+case_id,recording_id,window_id,label_name,start_seconds,end_seconds,seizure_overlap_seconds,seizure_overlap_fraction,signal_loaded,annotation_checked,label_confirmed,reviewer,review_date,notes

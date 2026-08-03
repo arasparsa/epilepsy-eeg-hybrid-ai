@@ -1,0 +1,65 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  segmentation_version: segmentation_v1
+  preprocessing_version: preprocessing_v1
+  harmonization_policy_version: harmonization_v1
+
+inputs:
+  preprocessing_manifest: "metadata/preprocessing/chbmit_preprocessing_manifest.csv"
+  preprocessing_validation: "metadata/preprocessing/chbmit_preprocessing_validation.csv"
+  seizures_file: "metadata/chbmit_seizures.csv"
+  inclusion_manifest: "metadata/harmonization/chbmit_recording_inclusion_manifest.csv"
+
+outputs:
+  metadata_directory: metadata/segmentation
+  report_directory: reports/segmentation
+
+windowing:
+  window_duration_seconds: 4.0
+  stride_seconds: 2.0
+  expected_sampling_rate_hz: 256.0
+  drop_incomplete_final_window: true
+  allow_cross_recording_windows: false
+  time_tolerance_seconds: 0.000001
+
+labeling:
+  labels:
+    non_ictal: 0
+    boundary: 1
+    ictal: 2
+
+  ictal_overlap_threshold: 0.01
+  boundary_minimum_overlap_seconds: 0.0
+
+  baseline_binary_mapping:
+    non_ictal: 0
+    boundary: null
+    ictal: 1
+
+  near_seizure_margin_seconds: 60.0
+  clean_non_ictal_minimum_distance_seconds: 60.0
+
+  merge_overlapping_seizure_intervals_before_labeling: true
+
+quality:
+  require_preprocessing_validation_status:
+    - valid
+
+  require_finite_window_samples_during_validation: true
+
+  automatically_drop_windows: false
+  automatically_drop_boundary_windows: false
+  automatically_drop_near_seizure_windows: false
+
+storage:
+  materialize_window_arrays: false
+  reason: >
+    The full manifest is stored. Signal arrays are read from FIF
+    on demand to avoid duplicating highly overlapping EEG data.
+  manifest_format: csv
+
+runtime:
+  overwrite: false
+  fail_fast: false
+  log_every_n_files: 10
