@@ -103,3 +103,5 @@ data/interim/chbmit/preprocessing_v1/*
 *.fif.gz
 
 metadata/segmentation/chbmit_window_manifest.csv
+
+metadata/splits/chbmit_window_outer_folds.csv

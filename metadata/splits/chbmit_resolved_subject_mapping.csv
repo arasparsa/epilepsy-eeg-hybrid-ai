@@ -1,0 +1,24 @@
+case_id,subject_id,mapping_status,mapping_source,notes
+chb01,subject_chb01_chb21,verified,PhysioNet CHB-MIT description,Same subject as chb21
+chb02,subject_chb02,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb03,subject_chb03,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb04,subject_chb04,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb05,subject_chb05,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb06,subject_chb06,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb07,subject_chb07,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb08,subject_chb08,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb10,subject_chb10,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb11,subject_chb11,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb12,subject_chb12,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb13,subject_chb13,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb14,subject_chb14,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb15,subject_chb15,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb16,subject_chb16,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb17,subject_chb17,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb18,subject_chb18,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb19,subject_chb19,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb20,subject_chb20,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb21,subject_chb01_chb21,verified,PhysioNet CHB-MIT description,Same subject as chb01 approximately 1.5 years later
+chb22,subject_chb22,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb23,subject_chb23,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
+chb24,subject_chb24,case_treated_as_independent,CHB-MIT case grouping,No documented cross-case identity relationship was applied.
