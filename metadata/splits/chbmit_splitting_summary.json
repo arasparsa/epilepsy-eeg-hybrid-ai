@@ -1,0 +1,15 @@
+{
+  "splitting_version": "splitting_v1",
+  "independent_subject_count": 22,
+  "case_count": 23,
+  "recording_count": 654,
+  "window_count": 1624301,
+  "outer_fold_count": 5,
+  "inner_fold_count_per_outer": 4,
+  "outer_random_state": 42,
+  "inner_base_random_state": 4200,
+  "grouping_unit": "subject_id",
+  "scikit_learn_version": "1.9.0",
+  "git_commit": "583793b773a95c3e586da5406aafb5e7a97f33d5",
+  "split_timestamp_utc": "2026-08-04T16:13:23.228310+00:00"
+}
