@@ -1,0 +1,3 @@
+case_id,subject_id,mapping_status,mapping_source,notes
+chb01,subject_chb01_chb21,verified,PhysioNet CHB-MIT description,Same subject as chb21
+chb21,subject_chb01_chb21,verified,PhysioNet CHB-MIT description,Same subject as chb01 approximately 1.5 years later

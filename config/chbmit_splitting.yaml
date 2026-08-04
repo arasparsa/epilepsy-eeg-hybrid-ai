@@ -1,0 +1,81 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  splitting_version: splitting_v1
+  segmentation_version: segmentation_v1
+  preprocessing_version: preprocessing_v1
+  harmonization_policy_version: harmonization_v1
+
+inputs:
+  window_manifest: "metadata/segmentation/chbmit_window_manifest.csv"
+  case_window_summary: "metadata/segmentation/chbmit_case_window_summary.csv"
+  recording_window_summary: "metadata/segmentation/chbmit_recording_window_summary.csv"
+  seizures_file: "metadata/chbmit_seizures.csv"
+  recordings_file: "metadata/chbmit_recordings.csv"
+  case_subject_mapping: "config/chbmit_case_subject_mapping.csv"
+
+outputs:
+  metadata_directory: metadata/splits
+  report_directory: reports/splitting
+
+grouping:
+  grouping_unit: subject_id
+  prohibit_subject_overlap: true
+  prohibit_case_overlap: true
+  prohibit_recording_overlap: true
+  prohibit_window_overlap: true
+
+  known_same_subject_cases:
+    - cases:
+        - chb01
+        - chb21
+      subject_id: subject_chb01_chb21
+      source: PhysioNet CHB-MIT database description
+
+outer_cv:
+  method: StratifiedGroupKFold
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+
+inner_cv:
+  method: StratifiedGroupKFold
+  n_splits: 4
+  shuffle: true
+  base_random_state: 4200
+  random_state_increment_per_outer_fold: 1
+
+stratification:
+  target_column: binary_label
+  use_boundary_windows: false
+  include_non_ictal: true
+  include_ictal: true
+
+window_eligibility:
+  binary_metric_eligible_labels:
+    - non_ictal
+    - ictal
+
+  training_candidate_labels:
+    - non_ictal
+    - ictal
+
+  clean_training_non_ictal_only: false
+
+  retain_boundary_in_master_manifest: true
+  retain_near_seizure_non_ictal: true
+
+validation:
+  require_every_subject_in_exactly_one_outer_test_fold: true
+  require_all_cases_of_subject_same_fold: true
+  require_each_outer_test_fold_has_ictal_windows: true
+  require_each_outer_test_fold_has_non_ictal_windows: true
+  require_each_inner_validation_fold_has_ictal_windows: true
+  require_each_inner_validation_fold_has_non_ictal_windows: true
+
+  minimum_subjects_per_outer_test_fold: 3
+  minimum_subjects_per_inner_validation_fold: 3
+
+runtime:
+  overwrite: false
+  fail_fast: true
