@@ -1,0 +1,11 @@
+{
+  "observed_case_count": 23,
+  "resolved_subject_count": 22,
+  "multi_case_subject_count": 1,
+  "multi_case_subjects": [
+    {
+      "subject_id": "subject_chb01_chb21",
+      "case_ids": "chb01|chb21"
+    }
+  ]
+}
