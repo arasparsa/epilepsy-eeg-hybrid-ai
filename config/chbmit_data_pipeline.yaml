@@ -1,0 +1,108 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  data_pipeline_version: data_pipeline_v1
+  splitting_version: splitting_v1
+  segmentation_version: segmentation_v1
+  preprocessing_version: preprocessing_v1
+
+inputs:
+  window_manifest: "metadata/segmentation/chbmit_window_manifest.csv"
+  preprocessing_manifest: "metadata/preprocessing/chbmit_preprocessing_manifest.csv"
+  subject_mapping: "metadata/splits/chbmit_resolved_subject_mapping.csv"
+  outer_subject_folds: "metadata/splits/chbmit_outer_subject_folds.csv"
+  inner_subject_folds: "metadata/splits/chbmit_inner_subject_folds.csv"
+  window_outer_folds: "metadata/splits/chbmit_window_outer_folds.csv"
+
+outputs:
+  metadata_directory: metadata/data_pipeline
+  scaler_directory: artifacts/scalers
+  report_directory: reports/data_pipeline
+
+signal:
+  expected_channel_count: 17
+  expected_sample_count: 1024
+  expected_sampling_rate_hz: 256.0
+  source_unit: volts
+  model_input_unit: microvolts
+  volts_to_microvolts: 1000000.0
+  output_dtype: float32
+
+normalization:
+  enabled: true
+  method: per_channel_global_zscore
+  fit_source: continuous_training_recordings
+  fit_chunk_duration_seconds: 300.0
+
+  center: true
+  scale: true
+  minimum_std_uv: 0.000001
+
+  clip_after_normalization: false
+  clip_min: -10.0
+  clip_max: 10.0
+
+  prohibit_validation_statistics: true
+  prohibit_test_statistics: true
+
+dataset:
+  binary_labels_only: true
+  exclude_boundary_from_binary_dataset: true
+
+  training_window_policy: all_binary
+  validation_window_policy: all_binary
+  test_window_policy: all_binary
+
+  return_metadata: true
+  verify_finite_values: true
+
+cache:
+  max_open_fif_files_per_worker: 4
+  preload_fif: false
+
+class_imbalance:
+  primary_strategy: loss_weighting
+
+  loss_weighting:
+    method: positive_to_negative_ratio
+    formula: n_negative_divided_by_n_positive
+    maximum_pos_weight: null
+
+  weighted_sampler:
+    enabled_for_primary: false
+    replacement: true
+    epoch_size_policy: training_window_count
+
+  deterministic_negative_sampling:
+    enabled_for_primary: false
+    negative_to_positive_ratio: 5.0
+    use_clean_non_ictal_only: true
+    minimum_negative_windows_per_subject: 100
+    random_state: 9400
+
+dataloader:
+  train_batch_size: 64
+  evaluation_batch_size: 128
+
+  num_workers_windows: 0
+  pin_memory: true
+  persistent_workers: false
+  prefetch_factor: 2
+
+  train_shuffle_without_sampler: true
+  validation_shuffle: false
+  test_shuffle: false
+
+  drop_last_train: true
+  drop_last_evaluation: false
+
+reproducibility:
+  base_seed: 42
+  deterministic_algorithms: true
+  cudnn_deterministic: true
+  cudnn_benchmark: false
+  warn_only_deterministic: true
+
+runtime:
+  overwrite: false
+  fail_fast: true
