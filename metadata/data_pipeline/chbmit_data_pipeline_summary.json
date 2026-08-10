@@ -1,0 +1,11 @@
+{
+  "outer_fold_count": 5,
+  "inner_fold_count_per_outer": 4,
+  "inner_scaler_count": 20,
+  "outer_development_scaler_count": 5,
+  "total_scaler_count": 25,
+  "normalization_method": "per_channel_global_zscore",
+  "primary_imbalance_strategy": "loss_weighting",
+  "git_commit": "1232628b4672caeeaec7ecc439955567870b9bda",
+  "timestamp_utc": "2026-08-07T15:52:23.920120+00:00"
+}
