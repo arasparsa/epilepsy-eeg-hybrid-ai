@@ -105,3 +105,15 @@ data/interim/chbmit/preprocessing_v1/*
 metadata/segmentation/chbmit_window_manifest.csv
 
 metadata/splits/chbmit_window_outer_folds.csv
+
+#===========================================================
+# Temporary DataLoader caches
+.cache/
+data/cache/
+
+# Temporary sampling exports
+metadata/data_pipeline/tmp_*
+
+# Python multiprocessing artifacts
+__pycache__/
+*.pyc
