@@ -1,0 +1,6 @@
+outer_fold,prediction_count,subject_count,recording_count,positive_count,negative_count,status
+0,314864,5,177,1218,313646,valid
+1,332587,5,137,937,331650,valid
+2,313459,5,150,1202,312257,valid
+3,415536,4,101,1113,414423,valid
+4,247855,3,89,1226,246629,valid
