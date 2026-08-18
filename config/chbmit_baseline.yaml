@@ -1,0 +1,190 @@
+project:
+  dataset: CHB-MIT
+  dataset_version: 1.0.0
+  baseline_version: baseline_v1
+  data_pipeline_version: data_pipeline_v1
+  splitting_version: splitting_v1
+  segmentation_version: segmentation_v1
+  preprocessing_version: preprocessing_v1
+
+inputs:
+  window_manifest: "metadata/segmentation/chbmit_window_manifest.csv"
+
+  subject_mapping: "metadata/splits/chbmit_resolved_subject_mapping.csv"
+
+  outer_subject_folds: "metadata/splits/chbmit_outer_subject_folds.csv"
+
+  inner_subject_folds: "metadata/splits/chbmit_inner_subject_folds.csv"
+
+  class_weights: "metadata/data_pipeline/chbmit_fold_class_weights.csv"
+
+  scaler_directory: "artifacts/scalers"
+
+  data_pipeline_config: "config/chbmit_data_pipeline.yaml"
+
+outputs:
+  metadata_directory: metadata/baseline
+
+  model_directory: artifacts/models/baseline_v1
+
+  report_directory: reports/baseline
+
+model:
+  name: simple_cnn_v1
+
+  input_channels: 17
+  input_samples: 1024
+
+  conv_channels:
+    - 32
+    - 64
+    - 128
+
+  kernel_sizes:
+    - 7
+    - 5
+    - 3
+
+  pooling_sizes:
+    - 2
+    - 2
+    - 2
+
+  dropout: 0.30
+
+  classifier_hidden_units: 64
+  classifier_dropout: 0.40
+
+
+# ==========================================================
+# FAST RECORDING-AWARE DATA ACCESS
+# ==========================================================
+data_access:
+
+  training:
+    mode: recording_aware_dynamic_negative_sampling
+
+    batched_block_reading: true
+    preload_fif: false
+    max_open_fif_files: 32
+
+    keep_all_positive_windows: true
+
+    negative_to_positive_ratio: 10.0
+
+    negative_sampling_replacement: false
+
+    resample_negatives_each_epoch: true
+
+    local_block_size: 256
+
+    batch_size: 64
+
+    shuffle_blocks: true
+
+    shuffle_within_block: false
+
+    drop_last: false
+
+  validation:
+    mode: recording_contiguous
+
+    batched_block_reading: true
+    preload_fif: false
+
+    # Because validation is recording-contiguous,
+    # a large cache is unnecessary.
+    max_open_fif_files: 4
+
+    sort_columns:
+      - output_fif_path
+      - start_sample
+      - window_id
+
+    batch_size: 128
+
+    shuffle: false
+
+    drop_last: false
+
+  test:
+    mode: recording_contiguous
+
+    batched_block_reading: true
+    preload_fif: false
+
+    max_open_fif_files: 4
+
+    sort_columns:
+      - output_fif_path
+      - start_sample
+      - window_id
+
+    batch_size: 128
+
+    shuffle: false
+
+    drop_last: false
+########################
+
+training:
+  optimizer: AdamW
+
+  learning_rate: 0.001
+  weight_decay: 0.0001
+
+  maximum_epochs: 50
+
+  early_stopping:
+    enabled: true
+    metric: average_precision
+    mode: max
+    patience: 8
+    minimum_delta: 0.0001
+
+  gradient_clipping:
+    enabled: true
+    max_norm: 5.0
+
+  loss:
+    name: BCEWithLogitsLoss
+
+    # IMPORTANT:
+    # Disabled because training is already rebalanced
+    # by dynamic negative sampling.
+    use_pos_weight: false
+
+  mixed_precision:
+    enabled: true
+
+
+evaluation:
+  primary_metric: average_precision
+
+  threshold_selection:
+    method: validation_max_f1
+    minimum_threshold: 0.01
+    maximum_threshold: 0.99
+    number_of_thresholds: 199
+    tie_break: closest_to_0_5
+
+
+outer_training:
+  epoch_strategy: median_best_inner_epoch
+  threshold_strategy: median_inner_validation_threshold
+
+
+constant_baseline:
+  enabled: true
+  probability_source: outer_development_prevalence
+  decision_threshold: 0.5
+
+reproducibility:
+  base_seed: 42
+  seed_increment_per_outer_fold: 100
+  seed_increment_per_inner_fold: 1
+
+
+runtime:
+  device: auto
+  overwrite: false
