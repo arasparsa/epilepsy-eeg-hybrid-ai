@@ -1,0 +1,11 @@
+{
+  "baseline_version": "baseline_v1",
+  "inner_runs_expected": 20,
+  "inner_runs_observed": 20,
+  "outer_runs_expected": 5,
+  "outer_cnn_runs_observed": 5,
+  "outer_prediction_count": 1624301,
+  "outer_test_subject_count": 22,
+  "errors": 0,
+  "warnings": 0
+}

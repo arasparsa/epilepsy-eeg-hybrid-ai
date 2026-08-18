@@ -1,0 +1,6 @@
+outer_fold,model_name,selected_epoch,raw_median_best_epoch,epoch_source,selected_threshold,threshold_source,mean_inner_average_precision,std_inner_average_precision,mean_inner_roc_auc,std_inner_roc_auc,inner_fold_count,configuration_frozen,timestamp_utc
+0,simple_cnn_v1,5,4.5,median_best_inner_epoch,0.7623232323232323,median_inner_validation_threshold,0.14328268200780223,0.1736730514399919,0.8426408690840905,0.09479923080506492,4,True,2026-08-17T09:50:49.982957+00:00
+1,simple_cnn_v1,5,5.0,median_best_inner_epoch,0.5593939393939393,median_inner_validation_threshold,0.04670834825476985,0.0029822072320897634,0.8157909465750173,0.1236839577544531,4,True,2026-08-17T09:50:49.982957+00:00
+2,simple_cnn_v1,17,16.5,median_best_inner_epoch,0.8687373737373738,median_inner_validation_threshold,0.15758403318695086,0.05566742332967153,0.8489560139821345,0.07079245597955053,4,True,2026-08-17T09:50:49.982957+00:00
+3,simple_cnn_v1,5,4.5,median_best_inner_epoch,0.6138383838383838,median_inner_validation_threshold,0.09866225326220701,0.0997307278640952,0.8242054493129499,0.1399761844485308,4,True,2026-08-17T09:50:49.982957+00:00
+4,simple_cnn_v1,5,5.0,median_best_inner_epoch,0.6781818181818182,median_inner_validation_threshold,0.21766690217821655,0.09686081894150438,0.8811486665295831,0.06747863956828465,4,True,2026-08-17T09:50:49.982957+00:00

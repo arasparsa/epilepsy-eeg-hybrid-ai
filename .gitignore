@@ -117,3 +117,17 @@ metadata/data_pipeline/tmp_*
 # Python multiprocessing artifacts
 __pycache__/
 *.pyc
+#============================================================
+# Phase 10 model checkpoints
+artifacts/models/**/*.pt
+artifacts/models/**/*.pth
+artifacts/models/**/*.ckpt
+
+# GPU / Python temporary artifacts
+__pycache__/
+*.pyc
+
+# Temporary baseline outputs
+metadata/baseline/tmp_*
+
+metadata/baseline/chbmit_outer_predictions.csv
